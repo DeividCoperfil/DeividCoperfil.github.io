@@ -1,0 +1,969 @@
+/* ============================================================
+   ESTILOS.CSS — SanArte Troquelado y Personalización
+   Temática: bordes tipo corte, colores pastel, artesanal
+   ============================================================ */
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== VARIABLES DE COLOR Y DISEÑO ===== */
+:root {
+    /* Colores pastel principales */
+    --color-principal:   #cdb4db;   /* lila pastel */
+    --color-secundario:  #ffc8dd;   /* rosa pastel */
+    --color-acento:      #bde0fe;   /* azul pastel */
+    --color-menta:       #b5ead7;   /* verde menta */
+    --color-durazno:     #ffdac1;   /* durazno */
+
+    /* Neutros */
+    --color-fondo:       #faf8fc;
+    --color-blanco:      #ffffff;
+    --color-texto:       #3d3450;
+    --color-texto-suave: #7a6f8a;
+
+    /* Énfasis */
+    --color-enfasis:     #7c5cbf;   /* púrpura oscuro */
+    --color-linea:       #d4b8e0;   /* para bordes troquel */
+
+    /* Tipografía */
+    --fuente-display:    'Playfair Display', Georgia, serif;
+    --fuente-cuerpo:     'Nunito', 'Segoe UI', Arial, sans-serif;
+
+    /* Radios */
+    --radio-sm:  8px;
+    --radio-md:  14px;
+    --radio-lg:  24px;
+
+    /* Sombras */
+    --sombra-suave: 0 6px 20px rgba(130, 90, 180, 0.08);
+    --sombra-media: 0 12px 35px rgba(130, 90, 180, 0.14);
+}
+
+/* ===== ESTILOS GENERALES DEL CUERPO ===== */
+body {
+    font-family: var(--fuente-cuerpo);
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* ===== BORDE TROQUEL SUPERIOR (patrón de corte) ===== */
+.borde-troquel-top {
+    width: 100%;
+    height: 18px;
+
+    /* Patrón SVG inline que simula línea de corte troquelado */
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--color-principal) 0px,
+        var(--color-principal) 12px,
+        transparent 12px,
+        transparent 20px
+    );
+    opacity: 0.5;
+}
+
+/* ===== BORDE TROQUEL INFERIOR ===== */
+.borde-troquel-bottom {
+    width: 100%;
+    height: 18px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--color-secundario) 0px,
+        var(--color-secundario) 12px,
+        transparent 12px,
+        transparent 20px
+    );
+    opacity: 0.5;
+}
+
+/* ===== DIVISOR INTERNO TIPO TROQUEL ===== */
+.divisor-troquel {
+    width: 80px;
+    height: 3px;
+    margin: 0 auto 40px auto;
+
+    /* Línea punteada que simula la marca del troquel */
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--color-enfasis) 0px,
+        var(--color-enfasis) 8px,
+        transparent 8px,
+        transparent 14px
+    );
+    border-radius: 2px;
+}
+
+/* ===== DECORACIÓN TROQUEL HERO ===== */
+.troquel-deco {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+
+    /* Cuadrado rotado con borde punteado = efecto troquel */
+    border: 2px dashed var(--color-linea);
+    border-radius: 20px;
+    opacity: 0.35;
+    transform: rotate(20deg);
+}
+
+.troquel-deco--izq {
+    left: -60px;
+    top: -40px;
+}
+
+.troquel-deco--der {
+    right: -60px;
+    bottom: -40px;
+    transform: rotate(-15deg);
+    border-color: var(--color-secundario);
+    opacity: 0.4;
+}
+
+/* ===== HEADER / NAVBAR ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 7%;
+
+    background: var(--color-blanco);
+    box-shadow: 0 2px 12px rgba(130, 90, 180, 0.09);
+
+    /* Borde inferior tipo línea de corte */
+    border-bottom: 2px dashed var(--color-linea);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* ==== LOGO ==== */
+.logo-wrapper img {
+    width: 110px;
+    object-fit: contain;
+}
+
+/* ==== NAVEGACIÓN ==== */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    margin-left: 8px;
+    padding: 6px 14px;
+    text-decoration: none;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    border-radius: var(--radio-sm);
+    position: relative;
+    transition: color 0.25s, background 0.25s;
+}
+
+/* Efecto línea de subrayado animado */
+nav a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: var(--color-principal);
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+nav a:hover {
+    color: var(--color-enfasis);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Enlace externo en el nav con estilo diferenciado */
+nav a.nav-externo {
+    background: var(--color-acento);
+    color: var(--color-texto);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+}
+
+nav a.nav-externo::after {
+    display: none;
+}
+
+nav a.nav-externo:hover {
+    background: var(--color-principal);
+    color: var(--color-blanco);
+}
+
+/* ===== SECCIONES GENERALES ===== */
+section {
+    padding: 75px 9%;
+}
+
+/* ===== TÍTULOS ===== */
+h1 {
+    font-family: var(--fuente-display);
+    font-size: 2.8rem;
+    color: var(--color-enfasis);
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: var(--fuente-display);
+    font-size: 2rem;
+    color: var(--color-enfasis);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+h3 {
+    font-family: var(--fuente-display);
+    font-size: 1.2rem;
+    color: var(--color-enfasis);
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 14px;
+    color: var(--color-texto);
+}
+
+/* Resaltado dentro del h1 del hero */
+.resalte {
+    color: var(--color-secundario);
+    text-shadow: 1px 1px 0 var(--color-enfasis);
+}
+
+/* ===== HERO ===== */
+#hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    min-height: 480px;
+    padding: 80px 10%;
+
+    background: linear-gradient(
+        135deg,
+        var(--color-principal) 0%,
+        var(--color-secundario) 50%,
+        var(--color-durazno) 100%
+    );
+
+    /* Borde inferior tipo troquel */
+    border-bottom: 3px dashed var(--color-blanco);
+    overflow: hidden;
+}
+
+/* Contenido del hero */
+.hero-contenido {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+/* Etiqueta pequeña en el hero */
+.hero-etiqueta {
+    display: inline-block;
+    background: var(--color-blanco);
+    color: var(--color-enfasis);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px dashed var(--color-enfasis);
+    letter-spacing: 0.05em;
+}
+
+/* Subtítulo del hero */
+.hero-subtitulo {
+    font-size: 1.05rem;
+    color: var(--color-blanco);
+    margin-bottom: 30px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botón principal del hero */
+.boton-hero {
+    display: inline-block;
+    padding: 13px 32px;
+    background: var(--color-blanco);
+    color: var(--color-enfasis);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.25s, box-shadow 0.25s;
+    border: 2px dashed var(--color-enfasis);
+}
+
+.boton-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-media);
+}
+
+/* ===== QUIÉNES SOMOS ===== */
+#quienes-somos {
+    background: linear-gradient(
+        160deg,
+        var(--color-secundario) 0%,
+        #fff4f8 100%
+    );
+
+    /* Borde interno tipo troquel */
+    border: 2px dashed var(--color-linea);
+    border-radius: var(--radio-lg);
+    margin: 40px 5%;
+    padding: 60px 8%;
+}
+
+#quienes-somos p {
+    max-width: 680px;
+    margin: 0 auto 14px auto;
+    text-align: center;
+}
+
+/* Grid de valores */
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+/* Tarjeta de valor */
+.valor-card {
+    background: var(--color-blanco);
+    border-radius: var(--radio-md);
+    padding: 28px 22px;
+    text-align: center;
+
+    /* Borde punteado = efecto troquel */
+    border: 2px dashed var(--color-linea);
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.valor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-media);
+}
+
+.valor-icono {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* ===== PRODUCTOS ===== */
+#productos {
+    background: var(--color-fondo);
+    padding: 75px 7%;
+}
+
+#productos > p {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+/* Grid de productos */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+/* Tarjeta de producto */
+.tarjeta-producto {
+    background: var(--color-blanco);
+    border-radius: var(--radio-md);
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    /* Borde inferior tipo troquel */
+    border-bottom: 3px dashed var(--color-principal);
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--sombra-media);
+}
+
+/* Contenedor de imagen de la tarjeta */
+.tarjeta-imagen {
+    position: relative;
+}
+
+/* Imagen del producto */
+.tarjeta-producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Badge/etiqueta de la tarjeta */
+.tarjeta-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--color-secundario);
+    color: var(--color-enfasis);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px dashed var(--color-enfasis);
+}
+
+/* Info de la tarjeta */
+.tarjeta-info {
+    padding: 20px 18px;
+}
+
+.tarjeta-info h3 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.tarjeta-info p {
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 0;
+}
+
+/* ===== SERVICIOS ===== */
+#servicios {
+    background: linear-gradient(
+        160deg,
+        var(--color-acento) 0%,
+        #f0f8ff 100%
+    );
+    border: 2px dashed var(--color-acento);
+    border-radius: var(--radio-lg);
+    margin: 40px 5%;
+    padding: 60px 8%;
+}
+
+#servicios > p {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 30px auto;
+}
+
+/* Lista de servicios con estilo */
+.lista-servicios {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+.lista-servicios li {
+    background: var(--color-blanco);
+    padding: 14px 18px;
+    border-radius: var(--radio-sm);
+    font-weight: 600;
+    font-size: 0.92rem;
+
+    /* Borde izquierdo tipo corte */
+    border-left: 4px dashed var(--color-principal);
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.2s;
+}
+
+.lista-servicios li:hover {
+    transform: translateX(4px);
+}
+
+/* Subtítulo del proceso */
+.subtitulo-proceso {
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 1.15rem;
+}
+
+/* Lista ordenada del proceso */
+.lista-proceso {
+    max-width: 550px;
+    margin: 0 auto;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: pasos;
+}
+
+.lista-proceso li {
+    counter-increment: pasos;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding: 14px 18px;
+    background: var(--color-blanco);
+    border-radius: var(--radio-sm);
+    font-size: 0.92rem;
+    border-right: 4px dashed var(--color-menta);
+    box-shadow: var(--sombra-suave);
+}
+
+.lista-proceso li::before {
+    content: counter(pasos);
+    background: var(--color-principal);
+    color: var(--color-blanco);
+    font-weight: 700;
+    font-size: 0.85rem;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ===== TABLA CATÁLOGO ===== */
+#catalogo {
+    padding: 75px 7%;
+}
+
+#catalogo > p {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Wrapper con scroll horizontal en móvil */
+.tabla-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radio-md);
+    box-shadow: var(--sombra-media);
+
+    /* Borde exterior tipo troquel */
+    border: 2px dashed var(--color-linea);
+}
+
+/* Tabla principal */
+.tabla-catalogo {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: var(--color-blanco);
+}
+
+/* Celdas de cabecera */
+.tabla-catalogo thead th {
+    background: var(--color-principal);
+    color: var(--color-blanco);
+    padding: 14px 18px;
+    text-align: left;
+    font-family: var(--fuente-display);
+    font-weight: 400;
+    border-bottom: 2px dashed var(--color-blanco);
+}
+
+/* Celdas del cuerpo */
+.tabla-catalogo tbody td {
+    padding: 13px 18px;
+    border-bottom: 1px dashed var(--color-linea);
+    color: var(--color-texto);
+}
+
+/* Filas alternas con color diferente */
+.tabla-catalogo tbody tr:nth-child(even) {
+    background: #fdf5ff;
+}
+
+/* Hover en filas */
+.tabla-catalogo tbody tr:hover {
+    background: var(--color-durazno);
+    transition: background 0.2s;
+}
+
+/* Estado disponible */
+.estado.disponible {
+    color: #3a9e6d;
+    font-weight: 700;
+}
+
+/* Estado agotado o de temporada */
+.estado.agotado {
+    color: #c05b5b;
+    font-weight: 700;
+}
+
+/* Pie de tabla */
+.tabla-catalogo tfoot td {
+    padding: 12px 18px;
+    font-size: 0.78rem;
+    color: var(--color-texto-suave);
+    font-style: italic;
+    background: #f9f5fd;
+    border-top: 1px dashed var(--color-linea);
+}
+
+/* ===== REDES SOCIALES ===== */
+#redes {
+    background: linear-gradient(
+        135deg,
+        var(--color-menta) 0%,
+        var(--color-acento) 100%
+    );
+    padding: 60px 10%;
+    text-align: center;
+    border-radius: var(--radio-lg);
+    margin: 0 5% 40px;
+    border: 2px dashed rgba(255,255,255,0.6);
+}
+
+#redes p {
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+/* Contenedor de redes */
+.redes-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Enlace de red social base */
+.red-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    color: var(--color-texto);
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: var(--sombra-suave);
+}
+
+.red-icono {
+    font-size: 1.3rem;
+}
+
+/* Facebook */
+.red-facebook {
+    background: var(--color-blanco);
+    border: 2px dashed #a0c4f0;
+}
+
+/* WhatsApp */
+.red-whatsapp {
+    background: var(--color-blanco);
+    border: 2px dashed var(--color-menta);
+}
+
+/* Instagram */
+.red-instagram {
+    background: var(--color-blanco);
+    border: 2px dashed var(--color-secundario);
+}
+
+.red-social:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: var(--sombra-media);
+}
+
+/* ===== FORMULARIO Y CONTACTO ===== */
+#contacto {
+    padding: 75px 7%;
+}
+
+#contacto > p {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 40px auto;
+}
+
+/* Grid del área de contacto (formulario + info) */
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Formulario */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Etiquetas del formulario */
+.formulario label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-enfasis);
+    margin-bottom: -6px;
+}
+
+/* Inputs y textarea */
+.formulario input,
+.formulario textarea,
+.formulario select {
+    padding: 12px 14px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    background: var(--color-blanco);
+    border: 1px solid #ddd;
+    border-radius: var(--radio-sm);
+    transition: border 0.25s, box-shadow 0.25s;
+}
+
+/* Borde al hacer focus */
+.formulario input:focus,
+.formulario textarea:focus,
+.formulario select:focus {
+    outline: none;
+    border: 2px dashed var(--color-principal);
+    box-shadow: 0 0 0 3px rgba(205, 180, 219, 0.2);
+}
+
+/* Textarea */
+.formulario textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Botón de envío */
+.boton-enviar {
+    margin-top: 8px;
+    padding: 13px;
+    border: 2px dashed var(--color-enfasis);
+    background: var(--color-principal);
+    color: var(--color-blanco);
+    font-family: var(--fuente-cuerpo);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: var(--radio-sm);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+}
+
+.boton-enviar:hover {
+    background: var(--color-enfasis);
+    transform: translateY(-2px);
+}
+
+/* Info de contacto */
+.contacto-info {
+    padding: 30px;
+    background: linear-gradient(
+        160deg,
+        var(--color-durazno) 0%,
+        var(--color-secundario) 100%
+    );
+    border-radius: var(--radio-md);
+
+    /* Borde tipo troquel */
+    border: 2px dashed var(--color-linea);
+}
+
+.contacto-info h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Lista de datos de contacto */
+.lista-contacto {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.lista-contacto li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+}
+
+.contacto-icono {
+    font-size: 1.2rem;
+    min-width: 26px;
+}
+
+/* Links dentro de la info de contacto */
+.lista-contacto a {
+    color: var(--color-enfasis);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed var(--color-enfasis);
+}
+
+.lista-contacto a:hover {
+    color: var(--color-texto);
+}
+
+/* Nota extra */
+.nota-contacto {
+    font-size: 0.83rem;
+    color: var(--color-texto-suave);
+    padding: 12px;
+    background: rgba(255,255,255,0.55);
+    border-radius: var(--radio-sm);
+    border-left: 3px dashed var(--color-principal);
+    margin-bottom: 0;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: var(--color-principal);
+    color: var(--color-blanco);
+    padding: 50px 8% 20px;
+
+    /* Borde superior tipo troquel */
+    border-top: 3px dashed var(--color-blanco);
+}
+
+/* Contenido del footer en columnas */
+.footer-contenido {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Columnas del footer */
+.footer-col h4 {
+    font-family: var(--fuente-display);
+    font-size: 1rem;
+    margin-bottom: 14px;
+    color: var(--color-blanco);
+    border-bottom: 1px dashed rgba(255,255,255,0.4);
+    padding-bottom: 8px;
+}
+
+.footer-col p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 0;
+}
+
+/* Listas del footer */
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--color-blanco);
+    border-bottom: 1px dashed var(--color-blanco);
+}
+
+/* Línea de copyright */
+.footer-copy {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255,255,255,0.3);
+    margin-bottom: 0;
+}
+
+/* ===== RESPONSIVE — Móvil ===== */
+@media (max-width: 768px) {
+
+    /* Header apilado en móvil */
+    header {
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px 5%;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 4px;
+    }
+
+    nav a {
+        margin-left: 0;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    /* Secciones con menos padding en móvil */
+    section {
+        padding: 50px 5%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Contacto en una sola columna */
+    .contacto-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hero con menos altura */
+    #hero {
+        min-height: 360px;
+        padding: 60px 6%;
+    }
+
+    /* Secciones con margen y border-radius menores */
+    #quienes-somos,
+    #servicios,
+    #redes {
+        margin: 20px 2%;
+        border-radius: var(--radio-md);
+    }
+
+    /* Decoraciones troquel ocultas en móvil */
+    .troquel-deco {
+        display: none;
+    }
+}
